@@ -1,0 +1,1226 @@
+/* ==========================================================================
+   THINAIRA MAIN STYLESHEET (WHITE, EMERALD GREEN & GOLD PALETTE)
+   Matched to Official THINAIRA Brand Logo
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('variables.css');
+@import url('components.css');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient Background on Light Canvas */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.orb-agro {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--agro-light) 0%, transparent 70%);
+  top: -120px;
+  left: -150px;
+}
+
+.orb-cyber {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--cyber-light) 0%, transparent 70%);
+  top: 30%;
+  right: -150px;
+}
+
+.orb-travel {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, var(--travel-primary) 0%, transparent 70%);
+  bottom: 5%;
+  left: 15%;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(6, 78, 59, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 78, 59, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 95%);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--agro-primary);
+}
+
+.font-tamil {
+  font-family: var(--font-tamil);
+  letter-spacing: 0.02em;
+}
+
+/* Gradients matching Logo */
+.text-gradient {
+  background: linear-gradient(135deg, #064e3b 20%, #ca8a04 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-agro-gradient {
+  background: linear-gradient(135deg, #064e3b 0%, #059669 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-cyber-gradient {
+  background: linear-gradient(135deg, #0f766e 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-travel-gradient {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Section Common Spacing */
+.section-padding {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 1px solid rgba(202, 138, 4, 0.35);
+  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.06);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--agro-primary);
+  margin-bottom: 1.25rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 4rem auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+  color: var(--agro-primary);
+}
+
+.section-description {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (WHITE & GOLD GLASSMORPHIC)
+   ========================================================================== */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(202, 138, 4, 0.2);
+}
+
+.site-nav.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid rgba(202, 138, 4, 0.35);
+  box-shadow: 0 4px 20px rgba(6, 78, 59, 0.08);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Brand Emblem */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.logo-icon-img {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1.5px solid rgba(202, 138, 4, 0.4);
+  box-shadow: 0 2px 8px rgba(6, 78, 59, 0.15);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.brand-logo:hover .logo-icon-img {
+  transform: rotate(4deg) scale(1.08);
+  box-shadow: 0 4px 15px rgba(202, 138, 4, 0.35);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--agro-primary);
+  line-height: 1;
+}
+
+.brand-tamil-badge {
+  font-size: 0.72rem;
+  color: var(--heritage-gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+}
+
+/* Navigation Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+  position: relative;
+  padding: 0.4rem 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--agro-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--agro-primary), var(--heritage-gold));
+  transition: width var(--transition-fast);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.btn-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  background: linear-gradient(135deg, var(--agro-primary), var(--agro-secondary));
+  border: 1px solid rgba(202, 138, 4, 0.3);
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.btn-nav-cta:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  border-color: var(--heritage-gold);
+  box-shadow: 0 6px 20px rgba(6, 78, 59, 0.3);
+  transform: translateY(-2px);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--agro-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ==========================================================================
+   HERO SECTION (WHITE, EMERALD & GOLD)
+   ========================================================================== */
+.hero-section {
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + 2.5rem);
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.hero-brand-showcase {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-logo-card {
+  max-width: 460px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(202, 138, 4, 0.35);
+  box-shadow: 0 15px 35px -5px rgba(6, 78, 59, 0.12), 0 0 30px rgba(202, 138, 4, 0.15);
+  overflow: hidden;
+  background: #ffffff;
+  padding: 0.85rem;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hero-logo-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--heritage-gold);
+  box-shadow: 0 20px 45px -5px rgba(6, 78, 59, 0.18), 0 0 40px rgba(202, 138, 4, 0.25);
+}
+
+.hero-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.hero-slogan-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1.4rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(202, 138, 4, 0.4);
+  border-radius: var(--radius-full);
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 15px rgba(6, 78, 59, 0.08);
+}
+
+.hero-slogan-pill .tamil-quote {
+  color: var(--agro-primary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hero-slogan-pill .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--heritage-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--heritage-gold);
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--agro-primary);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--text-muted);
+  max-width: 840px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.75;
+}
+
+.hero-slogan-highlight {
+  display: block;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--heritage-gold-dark);
+  margin-top: 0.75rem;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+/* Tri-Domain Hero Cards */
+.hero-domain-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.domain-pill-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.85rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.domain-pill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transition: height var(--transition-normal);
+}
+
+.domain-pill-card.agro::before {
+  background: linear-gradient(90deg, var(--agro-primary), var(--agro-light));
+}
+.domain-pill-card.cyber::before {
+  background: linear-gradient(90deg, var(--cyber-primary), var(--cyber-light));
+}
+.domain-pill-card.travel::before {
+  background: linear-gradient(90deg, var(--travel-primary), var(--heritage-gold));
+}
+
+.domain-pill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(202, 138, 4, 0.4);
+}
+
+.pill-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pill-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.domain-pill-card.agro .pill-icon-box {
+  background: var(--agro-bg-subtle);
+  border: 1px solid var(--agro-border);
+}
+
+.domain-pill-card.cyber .pill-icon-box {
+  background: var(--cyber-bg-subtle);
+  border: 1px solid var(--cyber-border);
+}
+
+.domain-pill-card.travel .pill-icon-box {
+  background: var(--travel-bg-subtle);
+  border: 1px solid var(--travel-border);
+}
+
+.pill-slogan-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.domain-pill-card.agro .pill-slogan-tag {
+  background: var(--agro-bg-subtle);
+  color: var(--agro-primary);
+  border: 1px solid var(--agro-border);
+}
+.domain-pill-card.cyber .pill-slogan-tag {
+  background: var(--cyber-bg-subtle);
+  color: var(--cyber-primary);
+  border: 1px solid var(--cyber-border);
+}
+.domain-pill-card.travel .pill-slogan-tag {
+  background: var(--travel-bg-subtle);
+  color: var(--travel-secondary);
+  border: 1px solid var(--travel-border);
+}
+
+.pill-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--agro-primary);
+}
+
+.pill-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.pill-card-link-arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.domain-pill-card.agro .pill-card-link-arrow { color: var(--agro-primary); }
+.domain-pill-card.cyber .pill-card-link-arrow { color: var(--cyber-primary); }
+.domain-pill-card.travel .pill-card-link-arrow { color: var(--travel-secondary); }
+
+.domain-pill-card:hover .pill-card-link-arrow {
+  transform: translateX(6px);
+}
+
+/* ==========================================================================
+   PHILOSOPHY & THINAI MATRIX
+   ========================================================================== */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.philosophy-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.75rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.quote-box {
+  background: linear-gradient(135deg, rgba(202, 138, 4, 0.08), rgba(6, 78, 59, 0.04));
+  border-left: 4px solid var(--heritage-gold);
+  padding: 1.5rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 1.5rem 0;
+}
+
+.quote-tamil {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--agro-primary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.quote-en {
+  font-size: 0.98rem;
+  color: var(--travel-secondary);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Thinai 5-Landscape Tabs & Cards */
+.thinai-matrix-container {
+  background: #ffffff;
+  border: 1px solid rgba(202, 138, 4, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.25rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.matrix-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.matrix-tab {
+  background: #ffffff;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1.4rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.matrix-tab:hover {
+  color: var(--agro-primary);
+  border-color: var(--heritage-gold);
+  transform: translateY(-2px);
+}
+
+.matrix-tab.active {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  color: #ffffff;
+  border-color: var(--heritage-gold);
+  box-shadow: 0 4px 15px rgba(6, 78, 59, 0.25);
+}
+
+.matrix-panel {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.matrix-panel.active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.matrix-detail-card {
+  padding: 2.25rem;
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.matrix-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.matrix-symbol-badge {
+  font-size: 0.78rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.matrix-desc {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.matrix-fusion-box {
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  border-left: 4px solid var(--agro-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.matrix-fusion-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: var(--heritage-gold-dark);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.matrix-fusion-content {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   DOMAIN SECTION STYLING (Agro, Cyber, Travel)
+   ========================================================================== */
+.domain-section-wrap {
+  position: relative;
+}
+
+.agro-theme-wrap {
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.cyber-theme-wrap {
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);
+}
+
+.travel-theme-wrap {
+  background: linear-gradient(180deg, #ffffff 0%, #fefce8 100%);
+}
+
+.domain-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.feature-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(202, 138, 4, 0.45);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.feature-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--agro-primary);
+}
+
+.feature-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.feature-specs-list {
+  list-style: none;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+}
+
+.feature-specs-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.feature-specs-list li svg {
+  flex-shrink: 0;
+}
+
+/* Specific Domain Accents */
+.agro-theme .feature-card:hover {
+  border-color: var(--agro-border);
+}
+.agro-theme .feature-icon {
+  background: var(--agro-bg-subtle);
+  border: 1px solid var(--agro-border);
+}
+
+.cyber-theme .feature-card:hover {
+  border-color: var(--cyber-border);
+}
+.cyber-theme .feature-icon {
+  background: var(--cyber-bg-subtle);
+  border: 1px solid var(--cyber-border);
+}
+
+.travel-theme .feature-card:hover {
+  border-color: var(--travel-border);
+}
+.travel-theme .feature-icon {
+  background: var(--travel-bg-subtle);
+  border: 1px solid var(--travel-border);
+}
+
+/* ==========================================================================
+   INTERACTIVE TOOLS / CALCULATOR SECTION
+   ========================================================================== */
+.tool-showcase-box {
+  background: #ffffff;
+  border: 1.5px solid rgba(202, 138, 4, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  margin-top: 2rem;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tool-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.tool-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--agro-primary);
+  margin-bottom: 0.5rem;
+}
+
+.tool-select, .tool-input, .tool-range {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.tool-select:focus, .tool-input:focus {
+  border-color: var(--agro-primary);
+  box-shadow: 0 0 0 3px rgba(6, 78, 59, 0.12);
+  background: #ffffff;
+}
+
+.tool-result-card {
+  background: #f8fafc;
+  border: 1.5px solid rgba(202, 138, 4, 0.3);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.tool-metric-val {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0.5rem 0;
+  color: var(--agro-primary);
+}
+
+.tool-metric-lbl {
+  font-size: 0.85rem;
+  color: var(--heritage-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   IMPACT & STATS COUNTER STRIP
+   ========================================================================== */
+.impact-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.impact-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.impact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--heritage-gold);
+  box-shadow: var(--shadow-lg);
+}
+
+.impact-number {
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  font-family: var(--font-heading);
+  margin-bottom: 0.3rem;
+}
+
+.impact-label {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   CONTACT & CONSULTATION SECTION
+   ========================================================================== */
+.contact-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-badge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.contact-icon-bubble {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  border: 1.5px solid rgba(202, 138, 4, 0.3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.3rem;
+}
+
+.contact-form-panel {
+  background: #ffffff;
+  border: 1.5px solid rgba(202, 138, 4, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--agro-primary);
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--agro-primary);
+  box-shadow: 0 0 0 3px rgba(6, 78, 59, 0.12);
+  background: #ffffff;
+}
+
+.domain-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.domain-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.domain-check-label:hover {
+  border-color: var(--heritage-gold);
+  background: #ffffff;
+}
+
+.domain-check-label input[type="checkbox"] {
+  accent-color: var(--agro-primary);
+}
+
+/* ==========================================================================
+   FOOTER (DEEP FOREST GREEN WITH GOLD TAMIL CALLIGRAPHY)
+   ========================================================================== */
+.site-footer {
+  background: #042017;
+  border-top: 3px solid var(--heritage-gold);
+  padding: 5rem 0 2rem 0;
+  position: relative;
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+.footer-banner-slogan {
+  text-align: center;
+  padding-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-tamil-calligraphy {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: #facc15;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.footer-slogan-trans {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footer-col-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #facc15;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+}
+
+.footer-link-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link-list a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-link-list a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+  font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-domain-strip {
+    grid-template-columns: 1fr;
+  }
+  .domain-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .matrix-panel.active {
+    grid-template-columns: 1fr;
+  }
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-section-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+  .nav-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: var(--shadow-lg);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 2px solid var(--heritage-gold);
+    display: none;
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+  .btn-nav-cta {
+    display: none;
+  }
+  .impact-strip {
+    grid-template-columns: 1fr;
+  }
+  .domain-checkbox-group {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

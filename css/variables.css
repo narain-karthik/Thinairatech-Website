@@ -1,0 +1,85 @@
+/* ==========================================================================
+   THINAIRA DESIGN SYSTEM VARIABLES (WHITE, GREEN & GOLD THEME)
+   Extracted from Official Brand Logo
+   "Nilam Kaathu, Neri Nindru, Thisai Kaattum Payanam — Thinai!"
+   ========================================================================== */
+
+:root {
+  /* Brand Typography */
+  --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-primary);
+  --font-tamil: 'Noto Sans Tamil', var(--font-primary);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Base Light Palette (Pure Luminous White & Soft Neutrals) */
+  --bg-deep: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-tint-green: #f0fdf4;
+  --bg-tint-gold: #fefce8;
+  
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.12);
+  --border-active: rgba(202, 138, 4, 0.45);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Logo Element 1: "THINA" & Leaves - Deep Forest & Emerald Green */
+  --agro-primary: #064e3b;
+  --agro-secondary: #047857;
+  --agro-light: #10b981;
+  --agro-glow: rgba(16, 185, 129, 0.22);
+  --agro-bg-subtle: rgba(16, 185, 129, 0.08);
+  --agro-border: rgba(16, 185, 129, 0.3);
+
+  /* Logo Element 2: "IRA", Hexagon & Compass - Metallic Sangam Gold & Bronze */
+  --travel-primary: #ca8a04;
+  --travel-secondary: #b45309;
+  --travel-light: #d97706;
+  --travel-glow: rgba(202, 138, 4, 0.22);
+  --travel-bg-subtle: rgba(202, 138, 4, 0.08);
+  --travel-border: rgba(202, 138, 4, 0.3);
+
+  --heritage-gold: #ca8a04;
+  --heritage-gold-dark: #b45309;
+  --heritage-copper: #9a3412;
+  --heritage-glow: rgba(202, 138, 4, 0.25);
+
+  /* Logo Element 3: Circuit Shield - Ethical Boundary Defense (Cyber Teal-Green) */
+  --cyber-primary: #0f766e;
+  --cyber-secondary: #115e59;
+  --cyber-light: #14b8a6;
+  --cyber-glow: rgba(15, 118, 110, 0.22);
+  --cyber-bg-subtle: rgba(15, 118, 110, 0.08);
+  --cyber-border: rgba(15, 118, 110, 0.3);
+
+  /* Logo Element 4: "tech" Accent - Refined Modern Crimson */
+  --brand-crimson: #991b1b;
+  --brand-crimson-light: #dc2626;
+
+  /* Glassmorphism & Elevation on Light Canvas */
+  --glass-blur: blur(12px);
+  --glass-blur-heavy: blur(20px);
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(6, 78, 59, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 32px -4px rgba(6, 78, 59, 0.1), 0 4px 12px -2px rgba(202, 138, 4, 0.06);
+  --shadow-card-hover: 0 20px 40px -4px rgba(6, 78, 59, 0.14), 0 0 25px rgba(202, 138, 4, 0.12);
+
+  /* Layout & Spacing */
+  --max-width: 1280px;
+  --header-height: 80px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
